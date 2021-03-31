@@ -1,0 +1,32 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Disease {
+	private Set<PersonID> IDs;
+	
+	public Disease(Set<PersonID> IDs) {
+		this.IDs=new HashSet<PersonID>();
+		for(PersonID i:IDs) {
+			this.IDs.add(i);
+		}
+		Set<PersonID> Quarantined = Exposed(this.IDs);
+		while(!Quarantined.isEmpty()) {
+			this.IDs.addAll(Quarantined);
+			Quarantined = Exposed(Quarantined);
+		}
+	}
+	
+	public Set<PersonID> Exposed(Set<PersonID> p){
+		Set<PersonID> result = new HashSet<PersonID>();
+		for(PersonID i: p) {
+			Set<PersonID> exposed = i.getExposedTo();
+			for(PersonID j:exposed)
+				result.add(j);
+		}
+		return result;
+	}
+	
+	public String toString() {
+		return String.format("Infected people IDs %s", this.IDs.toString());
+	}
+}
