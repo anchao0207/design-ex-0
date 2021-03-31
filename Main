@@ -1,1 +1,26 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+
+	public static void main(String[] args) {
+		PersonID p1 = new PersonID(new HashSet<PersonID>(),101,"A");
+		PersonID p2 = new PersonID(new HashSet<PersonID>(),102,"B");
+		Set<PersonID> exposedFromp3 = new HashSet<PersonID>();
+		exposedFromp3.add(p1);
+		exposedFromp3.add(p2);
+		PersonID p3 = new PersonID(exposedFromp3,103,"C");
+		PersonID p4 = new PersonID(new HashSet<PersonID>(),104,"D");
+		Set<PersonID> exposedFromp5 = new HashSet<PersonID>();
+		exposedFromp5.add(p3);
+		exposedFromp5.add(p4);
+		PersonID p5 = new PersonID(exposedFromp5,105,"E");
+		Set<PersonID> firstcase = new HashSet<PersonID>();
+		firstcase.add(p5);
+		firstcase.add(p1);
+		Disease d = new Disease(firstcase);
+		System.out.println(d);
+	}
+
+}
 
