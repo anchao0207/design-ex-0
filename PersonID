@@ -1,0 +1,33 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class PersonID {
+	private Set<PersonID> exposed;
+	private int ID;
+	private String name;
+	public PersonID(Set<PersonID> exposed, int ID,String name) {
+		this.exposed=new HashSet<PersonID>();
+		for(PersonID p:exposed) {
+			this.exposed.add(p);
+		}
+		this.ID=ID;
+		this.name=name;
+	}
+	
+	public int getID() {
+		return this.ID;
+	}
+	public String getName() {
+		return this.name;
+	}
+	
+	public Set<PersonID> getExposedTo(){
+		return this.exposed;
+	}
+	
+	public String toString() {
+		return ""+this.ID;
+	}
+	
+}
+
